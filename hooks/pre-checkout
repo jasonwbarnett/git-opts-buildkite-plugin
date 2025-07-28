@@ -21,7 +21,12 @@ if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_SPARSE_CHECKOUT:-}" == "true" ]]; then
   export BUILDKITE_GIT_SPARSE_CHECKOUT="true"
 fi
 
-if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_SPARSE_CHECKOUT_PATHS:-}" != "" ]]; then
+if plugin_read_list_into_result "SPARSE_CHECKOUT_PATHS"; then
   echo "--- :git: Configuring sparse checkout paths"
-  export BUILDKITE_GIT_SPARSE_CHECKOUT_PATHS="${BUILDKITE_PLUGIN_GIT_OPTS_SPARSE_CHECKOUT_PATHS}"
+  # Join array elements with commas
+  OLD_IFS="$IFS"
+  IFS=','
+  BUILDKITE_GIT_SPARSE_CHECKOUT_PATHS="${result[*]}"
+  IFS="$OLD_IFS"
+  export BUILDKITE_GIT_SPARSE_CHECKOUT_PATHS
 fi
