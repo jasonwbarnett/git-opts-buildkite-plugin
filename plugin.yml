@@ -8,5 +8,9 @@ configuration:
       type: string
     filter:
       type: string
+    sparse-checkout:
+      type: boolean
+    sparse-checkout-paths:
+      type: array
   required: []
   additionalProperties: false
