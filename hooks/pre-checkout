@@ -1,6 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
+
+# shellcheck source=lib/plugin.bash
+. "$DIR/../lib/plugin.bash"
+
 if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_DEPTH:-}" != "" ]]; then
   echo "--- :git: Configuring depth"
   export BUILDKITE_GIT_CLONE_DEPTH="${BUILDKITE_PLUGIN_GIT_OPTS_DEPTH}"
