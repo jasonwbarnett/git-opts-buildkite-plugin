@@ -8,7 +8,7 @@ if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_DEPTH:-}" != "" ]]; then
 fi
 
 if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_FILTER:-}" != "" ]]; then
-  echo "--- :git: Configuring depth"
+  echo "--- :git: Configuring filter"
   export BUILDKITE_GIT_CLONE_FLAGS="${BUILDKITE_GIT_CLONE_FLAGS} --filter=${BUILDKITE_PLUGIN_GIT_OPTS_FILTER}"
   export BUILDKITE_GIT_FETCH_FLAGS="${BUILDKITE_GIT_FETCH_FLAGS} --filter=${BUILDKITE_PLUGIN_GIT_OPTS_FILTER}"
 fi
