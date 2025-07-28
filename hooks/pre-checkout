@@ -12,3 +12,13 @@ if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_FILTER:-}" != "" ]]; then
   export BUILDKITE_GIT_CLONE_FLAGS="${BUILDKITE_GIT_CLONE_FLAGS} --filter=${BUILDKITE_PLUGIN_GIT_OPTS_FILTER}"
   export BUILDKITE_GIT_FETCH_FLAGS="${BUILDKITE_GIT_FETCH_FLAGS} --filter=${BUILDKITE_PLUGIN_GIT_OPTS_FILTER}"
 fi
+
+if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_SPARSE_CHECKOUT:-}" == "true" ]]; then
+  echo "--- :git: Configuring sparse checkout"
+  export BUILDKITE_GIT_SPARSE_CHECKOUT="true"
+fi
+
+if [[ "${BUILDKITE_PLUGIN_GIT_OPTS_SPARSE_CHECKOUT_PATHS:-}" != "" ]]; then
+  echo "--- :git: Configuring sparse checkout paths"
+  export BUILDKITE_GIT_SPARSE_CHECKOUT_PATHS="${BUILDKITE_PLUGIN_GIT_OPTS_SPARSE_CHECKOUT_PATHS}"
+fi
