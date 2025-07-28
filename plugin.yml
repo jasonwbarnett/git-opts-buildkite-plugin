@@ -1,0 +1,12 @@
+name: Git Opts
+description: Configure git options for git clone/git fetch
+author: https://github.com/jasonwbarnett
+requirements: []
+configuration:
+  properties:
+    depth:
+      type: string
+    filter:
+      type: string
+  required: []
+  additionalProperties: false
